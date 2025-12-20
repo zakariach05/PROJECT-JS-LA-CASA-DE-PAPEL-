@@ -1,64 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Casa de Papel</title>
-<link rel="icon" href="image/IMGtitle.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css ">
-<!-- Bouton Retour en haut -->
-<button id="btnTop" title="Retour en haut">⬆</button>
-    <!-- Son au clic -->
-    <audio id="clickSound" src="https://www.myinstants.com/media/sounds/click.mp3" preload="auto"></audio>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Casa de Papel</title>
+  <link rel="icon" href="image/IMGtitle.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css ">
+  <!-- Bouton Retour en haut -->
+  <button id="btnTop" title="Retour en haut">⬆</button>
+  <!-- Son au clic -->
+  <audio id="clickSound" src="https://www.myinstants.com/media/sounds/click.mp3" preload="auto"></audio>
 </head>
+
 <body>
 
-<!-- SPLASH SCREEN -->
-<div class="splash">
-  <h1 style="text-align: center;" class="splash-title">Bienvenidos <br> a La Casa de Papel</h1>
-  <img id="masquesplash" src="image/masquenav.png" alt="masque">
-</div>
+  <!-- SPLASH SCREEN -->
+  <div class="splash">
+    <h1 style="text-align: center;" class="splash-title">Bienvenidos <br> a La Casa de Papel</h1>
+    <img id="masquesplash" src="image/masquenav.png" alt="masque">
+  </div>
 
 
 
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div id="containerr" class="container">
-    <img href="#hero" class="navbar-brand" src="image/masquenav.png" alt="masque">
-    <a class="navbar-brand" href="#hero">LA CASA DE PAPEL </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navbarNav" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#hero">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#infos">Histoire</a></li>
-        <li class="nav-item"><a class="nav-link" href="Boutiquue.html">Boutique</a></li>
-        <li class="nav-item"><a class="nav-link" href="#saisons">Saisons</a></li>
-        <li class="nav-item"><a class="nav-link" href="Watch.html">TV</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div id="containerr" class="container">
+      <img href="#hero" class="navbar-brand" src="image/masquenav.png" alt="masque">
+      <a class="navbar-brand" href="#hero">LA CASA DE PAPEL </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#infos">Histoire</a></li>
+          <li class="nav-item"><a class="nav-link" href="Boutiquue.html">Boutique</a></li>
+          <li class="nav-item"><a class="nav-link" href="#saisons">Saisons</a></li>
+          <li class="nav-item"><a class="nav-link" href="Watch.html">TV</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- HERO SECTION -->
-<section  class="hero" id="hero">
-  <div class="overlay"></div>
-  <div class="hero-content">
-    <h1>El atraco </h1>
-    <p>“Bella Ciao, Bella Ciao, Bella Ciao Ciao Ciao”</p>
-    <a href="Watch.html" class="btn btn-danger btn-lg">▶ Mira Ahora</a>
-  </div>
-</section>
-<!-- Musique Bella Ciao -->
-<!-- Section Hero avec vidéo Bella Ciao -->
-<!-- <div class="hero-content">
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>El atraco </h1>
+      <p>“Bella Ciao, Bella Ciao, Bella Ciao Ciao Ciao”</p>
+      <a href="Watch.html" class="btn btn-danger btn-lg">▶ Mira Ahora</a>
+    </div>
+  </section>
+  <!-- Musique Bella Ciao -->
+  <!-- Section Hero avec vidéo Bella Ciao -->
+  <!-- <div class="hero-content">
   <h1>🎭 La Casa de Papel</h1>
   <p>Revivez la légende avec la chanson culte <strong>“Bella Ciao”</strong></p> -->
-<!-- <section class="hero" id="hero">
+  <!-- <section class="hero" id="hero">
   <div class="video-container">
     <video id="introVideo" autoplay loop muted>
       <source src="video/LA CASA DE PAPEL OPENING SONG [HQ SOUNDTRACK] - Onur (1080p, h264).mp4" type="video/mp4">
@@ -69,403 +71,438 @@
 
 
 
-<!-- INFORMATIONS DETAILLEES -->
-<section id="infos">
-  <h2>Histoire du La Casa de Papel</h2>
-  <div class="container">
-    <div id="card-info" class="info-card">
-      <h3 style="margin-left: 170px;">Histoire générale</h3>
-      <p>
-        La Casa de Papel raconte l’histoire du Professeur, un génie du crime, qui rassemble une équipe de braqueurs pour réaliser le casse du siècle. 
-        Chaque membre porte un pseudonyme de ville et a des compétences spécifiques. Leur premier objectif est la Maison de la Monnaie d’Espagne, 
-        mais rien ne se passe comme prévu à cause des tensions et des imprévus. Les relations entre les braqueurs, les dilemmes moraux et les trahisons ajoutent du suspense. 
-        Après ce casse, l’équipe doit faire face à de nouveaux défis et à la pression de la police. La série combine action, psychologie et rebondissements, 
+  <!-- INFORMATIONS DETAILLEES -->
+  <section id="infos">
+    <h2>Histoire du La Casa de Papel</h2>
+    <div class="container">
+      <div id="card-info" class="info-card">
+        <h3 style="margin-left: 170px;">Histoire générale</h3>
+        <p>
+          La Casa de Papel raconte l’histoire du Professeur, un génie du crime, qui rassemble une équipe de braqueurs
+          pour réaliser le casse du siècle.
+          Chaque membre porte un pseudonyme de ville et a des compétences spécifiques. Leur premier objectif est la
+          Maison de la Monnaie d’Espagne,
+          mais rien ne se passe comme prévu à cause des tensions et des imprévus. Les relations entre les braqueurs, les
+          dilemmes moraux et les trahisons ajoutent du suspense.
+          Après ce casse, l’équipe doit faire face à de nouveaux défis et à la pression de la police. La série combine
+          action, psychologie et rebondissements,
           avec un style visuel emblématique (masques de Dalí, combinaisons rouges).
         </p>
-      
+
         <h3>Premier braquage : Le casse de la Maison de la Monnaie</h3>
         <p>
-          L’équipe infiltre la Maison de la Monnaie pour imprimer 2,4 milliards d’euros. Ils prennent des otages et doivent gérer la police depuis l’extérieur grâce au Professeur. 
+          L’équipe infiltre la Maison de la Monnaie pour imprimer 2,4 milliards d’euros. Ils prennent des otages et
+          doivent gérer la police depuis l’extérieur grâce au Professeur.
           Les tensions internes et les imprévus compliquent le plan, mais ils parviennent à s’en sortir.
         </p>
-      
+
         <h3>Deuxième braquage : Le braquage de la Banque d’Espagne</h3>
         <p>
-          Le Professeur et son équipe s’attaquent à la Banque d’Espagne pour voler l’or et sauver un des leurs. 
-          Le casse devient plus complexe avec des enjeux émotionnels et stratégiques. Loyauté, trahisons et affrontements avec la police rendent l’opération très périlleuse.
+          Le Professeur et son équipe s’attaquent à la Banque d’Espagne pour voler l’or et sauver un des leurs.
+          Le casse devient plus complexe avec des enjeux émotionnels et stratégiques. Loyauté, trahisons et
+          affrontements avec la police rendent l’opération très périlleuse.
         </p>
       </div>
 
       <div id="infoo-card" class="flip-card text-center">
-          <img style="height: 320px;" src="image/Histoirejpg.jpg" alt="La Casa de Papel" class="img-fluid"><br><br><br>
-          <img src="image/BRAQUAGE1.jpg" alt="Banque1" class="img-fluid"><br><br>
-          <img src="image/BRAQUAGE2.jpg" alt="Banque2" class="img-fluid">
+        <img style="height: 320px;" src="image/Histoirejpg.jpg" alt="La Casa de Papel" class="img-fluid"><br><br><br>
+        <img src="image/BRAQUAGE1.jpg" alt="Banque1" class="img-fluid"><br><br>
+        <img src="image/BRAQUAGE2.jpg" alt="Banque2" class="img-fluid">
       </div>
-</section>
+  </section>
 
 
-<!-- PERSONNAGES -->
-<section id="personnages">
-  <h2 id="Personnages-principaux">Personnages principaux</h2>
-  <div class="container">
-    <div class="row g-4">
+  <!-- PERSONNAGES -->
+  <section id="personnages">
+    <h2 id="Personnages-principaux">Personnages principaux</h2>
+    <div class="container">
+      <div class="row g-4">
 
-      <div id="professeur" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/Le_Professeur.webp" alt="Le Professeur">
-          <div class="p-3">
-            <h5>Le Professeur</h5>
-            <p>Álvaro Morte — Stratège depuis l’extérieur.</p>
+        <div id="professeur" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/Le_Professeur.webp" alt="Le Professeur">
+            <div class="p-3">
+              <h5>Le Professeur</h5>
+              <p>Álvaro Morte — Stratège depuis l’extérieur.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="tokyo" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/tokyo.jpeg" alt="Tokyo">
-          <div class="p-3">
-            <h5>Tokyo</h5>
-            <p>Úrsula Corberó — Braqueuse principale, narratrice.</p>
+        <div id="tokyo" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/tokyo.jpeg" alt="Tokyo">
+            <div class="p-3">
+              <h5>Tokyo</h5>
+              <p>Úrsula Corberó — Braqueuse principale, narratrice.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="rio" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/Rio.webp" alt="Rio">
-          <div class="p-3">
-            <h5>Rio</h5>
-            <p>Miguel Herrán — Hacker et complice.</p>
+        <div id="rio" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/Rio.webp" alt="Rio">
+            <div class="p-3">
+              <h5>Rio</h5>
+              <p>Miguel Herrán — Hacker et complice.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="berlin" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/berlin.jpeg" alt="Berlin">
-          <div class="p-3">
-            <h5>Berlin</h5>
-            <p>Pedro Alonso — Commandant du groupe à l’intérieur, stratège charismatique.</p>
+        <div id="berlin" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/berlin.jpeg" alt="Berlin">
+            <div class="p-3">
+              <h5>Berlin</h5>
+              <p>Pedro Alonso — Commandant du groupe à l’intérieur, stratège charismatique.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="nairobi" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/nairobi.jpeg" alt="Nairobi">
-          <div class="p-3">
-            <h5>Nairobi</h5>
-            <p>Alba Flores — Experte en or et organisation, impression d’argent.</p>
+        <div id="nairobi" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/nairobi.jpeg" alt="Nairobi">
+            <div class="p-3">
+              <h5>Nairobi</h5>
+              <p>Alba Flores — Experte en or et organisation, impression d’argent.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="denver" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/denver.jpeg" alt="Denver">
-          <div class="p-3">
-            <h5>Denver</h5>
-            <p>Jaime Lorente — Fils de Moscou, impulsif mais loyal.</p>
+        <div id="denver" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/denver.jpeg" alt="Denver">
+            <div class="p-3">
+              <h5>Denver</h5>
+              <p>Jaime Lorente — Fils de Moscou, impulsif mais loyal.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="moscou" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/Moscow.webp" alt="Moscou">
-          <div class="p-3">
-            <h5>Moscou</h5>
-            <p>Paco Tous — Spécialiste du creusement, père de Denver.</p>
+        <div id="moscou" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/Moscow.webp" alt="Moscou">
+            <div class="p-3">
+              <h5>Moscou</h5>
+              <p>Paco Tous — Spécialiste du creusement, père de Denver.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="helsinki" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/helnsinki.jpeg" alt="Helsinki">
-          <div class="p-3">
-            <h5>Helsinki</h5>
-            <p>Darko Perić — Sécurité et tactique.</p>
+        <div id="helsinki" class="col-md-3">
+          <div class="flip-card text-center">
+            <img src="image/helnsinki.jpeg" alt="Helsinki">
+            <div class="p-3">
+              <h5>Helsinki</h5>
+              <p>Darko Perić — Sécurité et tactique.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="oslo" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/oalo.jpeg" alt="Oslo">
-          <div class="p-3">
-            <h5>Oslo</h5>
-            <p>Roberto García — Expert en sécurité et intimidation.</p>
+        <div id="oslo" class="col-md-3 extra-character">
+          <div class="flip-card text-center">
+            <img src="image/oalo.jpeg" alt="Oslo">
+            <div class="p-3">
+              <h5>Oslo</h5>
+              <p>Roberto García — Expert en sécurité et intimidation.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="lisbonne" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/raquel.jpeg" alt="Lisbonne">
-          <div class="p-3">
-            <h5>Lisbonne</h5>
-            <p>Itziar Ituño — Ancienne inspectrice devenue membre du groupe.</p>
+        <div id="lisbonne" class="col-md-3 extra-character">
+          <div class="flip-card text-center">
+            <img src="image/raquel.jpeg" alt="Lisbonne">
+            <div class="p-3">
+              <h5>Lisbonne</h5>
+              <p>Itziar Ituño — Ancienne inspectrice devenue membre du groupe.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="bogota" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/Bogota.webp" alt="Bogotá">
-          <div class="p-3">
-            <h5>Bogotá</h5>
-            <p>Hovik Keuchkerian — Expert en or et logistique.</p>
+        <div id="bogota" class="col-md-3 extra-character">
+          <div class="flip-card text-center">
+            <img src="image/Bogota.webp" alt="Bogotá">
+            <div class="p-3">
+              <h5>Bogotá</h5>
+              <p>Hovik Keuchkerian — Expert en or et logistique.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="palermo" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/Palerme.webp" alt="Palermo">
-          <div class="p-3">
-            <h5>Palermo</h5>
-            <p>Rodrigo de la Serna — Coordonne l’intérieur, stratégie.</p>
+        <div id="palermo" class="col-md-3 extra-character">
+          <div class="flip-card text-center">
+            <img src="image/Palerme.webp" alt="Palermo">
+            <div class="p-3">
+              <h5>Palermo</h5>
+              <p>Rodrigo de la Serna — Coordonne l’intérieur, stratégie.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="marseille" class="col-md-3">
-        <div class="flip-card text-center">
-          <img src="image/Marseille.webp" alt="Marseille">
-          <div class="p-3">
-            <h5>Marseille</h5>
-            <p>Luka Peros — Sécurité et tactique.</p>
+        <div id="marseille" class="col-md-3 extra-character">
+          <div class="flip-card text-center">
+            <img src="image/Marseille.webp" alt="Marseille">
+            <div class="p-3">
+              <h5>Marseille</h5>
+              <p>Luka Peros — Sécurité et tactique.</p>
+            </div>
           </div>
         </div>
+        <div id="stockholm" class="col-md-3 appear extra-character">
+          <div class="flip-card text-center">
+            <img src="image/Stockholm.webp" alt="Stockholm">
+            <div class="p-3">
+              <h5>Stockholm</h5>
+              <p>Esther Acebo — ex‑otage, rejoint l’équipe, relation avec Denver.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="manila" class="col-md-3 appear extra-character">
+          <div class="flip-card text-center">
+            <img src="image/manille.jpeg" alt="Manila">
+            <div class="p-3">
+              <h5>Manila</h5>
+              <p>Belén Cuesta — ex‑otage, soutien tactique dans le braquage.</p>
+            </div>
+          </div>
+        </div>
+
+
       </div>
-      <div id="stockholm" class="col-md-3 appear">
-    <div class="flip-card text-center">
-      <img src="image/Stockholm.webp" alt="Stockholm">
-      <div class="p-3">
-        <h5>Stockholm</h5>
-        <p>Esther Acebo — ex‑otage, rejoint l’équipe, relation avec Denver.</p>
+      <div class="text-center mt-4">
+        <button id="voir-plus-btn" class="btn btn-danger btn-lg">Voir plus</button>
       </div>
     </div>
-  </div>
-  
-  <div id="manila" class="col-md-3 appear">
-    <div class="flip-card text-center">
-      <img src="image/manille.jpeg" alt="Manila">
-      <div class="p-3">
-        <h5>Manila</h5>
-        <p>Belén Cuesta — ex‑otage, soutien tactique dans le braquage.</p>
-      </div>
-    </div>
-  </div>
-
-
-    </div>
-  </div>
-</section>
+  </section>
 
 
 
 
 
-<!-- SAISONS -->
-<!-- ======= Section Saisons / Timeline avec carrousels Bootstrap ======= -->
+  <!-- SAISONS -->
+  <!-- ======= Section Saisons / Timeline avec carrousels Bootstrap ======= -->
 
 
-<section id="saisons" class="saisons-section">
-  <h2 class="text-center mb-5">Les Saisons de <span>La Casa de Papel</span></h2>
+  <section id="saisons" class="saisons-section">
+    <h2 class="text-center mb-5">Les Saisons de <span>La Casa de Papel</span></h2>
 
-  <div id="carouselSaisons" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
+    <div id="carouselSaisons" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
 
-      <!-- Exemple Saison 1 -->
-      <div class="carousel-item active">
-        <div class="carousel-content text-center">
-          <iframe class="saison-media" width="1061" height="597" src="https://www.youtube.com/embed/hMANIarjT50" title="La Casa De Papel (Money Heist) - Season 1 Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="carousel-caption">
-            <h3>Saison 1 — Le début du braquage</h3>
-            <p>13 épisodes • Le Professeur lance le casse de la Maison de la Monnaie. Suspense et stratégie au rendez-vous.</p>
+        <!-- Exemple Saison 1 -->
+        <div class="carousel-item active">
+          <div class="carousel-content text-center">
+            <iframe class="saison-media" width="1061" height="597" src="https://www.youtube.com/embed/hMANIarjT50"
+              title="La Casa De Papel (Money Heist) - Season 1 Trailer" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="carousel-caption">
+              <h3>Saison 1 — Le début du braquage</h3>
+              <p>13 épisodes • Le Professeur lance le casse de la Maison de la Monnaie. Suspense et stratégie au
+                rendez-vous.</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Exemple Saison 2 -->
-      <div class="carousel-item">
-        <div class="carousel-content text-center">
-          <iframe class="saison-media" width="1061" height="597" src="https://www.youtube.com/embed/ZAXA1DV4dtI" title="Money Heist - Part 2 | Official Trailer | Netflix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="carousel-caption">
-            <h3>Saison 2 — Le plan s’effondre</h3>
-            <p>9 épisodes • Les tensions montent, les masques tombent. La police se rapproche dangereusement.</p>
+        <!-- Exemple Saison 2 -->
+        <div class="carousel-item">
+          <div class="carousel-content text-center">
+            <iframe class="saison-media" width="1061" height="597" src="https://www.youtube.com/embed/ZAXA1DV4dtI"
+              title="Money Heist - Part 2 | Official Trailer | Netflix" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="carousel-caption">
+              <h3>Saison 2 — Le plan s’effondre</h3>
+              <p>9 épisodes • Les tensions montent, les masques tombent. La police se rapproche dangereusement.</p>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div class="carousel-item">
-        <div class="carousel-content text-center">
-          <iframe width="1061" height="597" src="https://www.youtube.com/embed/TFJwUwnShnA" title="Money Heist: Part 3 | Official Trailer | Netflix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="carousel-caption">
-            <h3>Saison 3 — Le retour du gang</h3>
-            <p>8 épisodes • Après avoir fui, la bande revient pour un nouveau braquage : la Banque d’Espagne.</p>
+
+        <div class="carousel-item">
+          <div class="carousel-content text-center">
+            <iframe width="1061" height="597" src="https://www.youtube.com/embed/TFJwUwnShnA"
+              title="Money Heist: Part 3 | Official Trailer | Netflix" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="carousel-caption">
+              <h3>Saison 3 — Le retour du gang</h3>
+              <p>8 épisodes • Après avoir fui, la bande revient pour un nouveau braquage : la Banque d’Espagne.</p>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div class="carousel-item">
-        <div class="carousel-content text-center">
-          <iframe width="1061" height="597" src="https://www.youtube.com/embed/p_PJbmrX4uk" title="Money Heist: Part 4 | Official Trailer | Netflix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="carousel-caption">
+
+        <div class="carousel-item">
+          <div class="carousel-content text-center">
+            <iframe width="1061" height="597" src="https://www.youtube.com/embed/p_PJbmrX4uk"
+              title="Money Heist: Part 4 | Official Trailer | Netflix" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="carousel-caption">
               <h3>Saison 4 — Chaos et pertes</h3>
-            <p>8 épisodes • Le plan vacille, la bande se divise et le danger s’intensifie à l’intérieur de la banque.</p>
+              <p>8 épisodes • Le plan vacille, la bande se divise et le danger s’intensifie à l’intérieur de la banque.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div class="carousel-item">
-        <div class="carousel-content text-center">
-          <iframe width="1061" height="597" src="https://www.youtube.com/embed/sOK-lHOIJZ8" title="Money Heist Season 5 Trailer | &#39;Part 1&#39; | Rotten Tomatoes TV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="carousel-caption">
+
+        <div class="carousel-item">
+          <div class="carousel-content text-center">
+            <iframe width="1061" height="597" src="https://www.youtube.com/embed/sOK-lHOIJZ8"
+              title="Money Heist Season 5 Trailer | &#39;Part 1&#39; | Rotten Tomatoes TV" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="carousel-caption">
               <h3>Saison 5 — Vol 1</h3>
-      <p>10 épisodes • Le Professeur affronte son ultime défi dans un premier final bouleversant.</p>
+              <p>10 épisodes • Le Professeur affronte son ultime défi dans un premier final bouleversant.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <div class="carousel-content text-center">
+            <iframe width="1061" height="597" src="https://www.youtube.com/embed/8moHEB-ierQ"
+              title="Money Heist: Part 5 | Volume 2 Teaser | Netflix" frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="carousel-caption">
+              <h3>Saison 5 — Vol 2</h3>
+              <p>10 épisodes • Le Professeur conclut son ultime défi dans le final explosif.</p>
+            </div>
           </div>
         </div>
       </div>
-      
-      <div class="carousel-item">
-        <div class="carousel-content text-center">
-          <iframe width="1061" height="597" src="https://www.youtube.com/embed/8moHEB-ierQ" title="Money Heist: Part 5 | Volume 2 Teaser | Netflix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          <div class="carousel-caption">
-            <h3>Saison 5 — Vol 2</h3>
-      <p>10 épisodes • Le Professeur conclut son ultime défi dans le final explosif.</p>
-          </div>
+
+      <!-- Contrôles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselSaisons" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Précédent</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselSaisons" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Suivant</span>
+      </button>
+    </div>
+  </section>
+
+
+
+  <!-- Anecdotes et faits amusants-->
+  <section id="trivia" class="trivia-section">
+    <h2 class="text-center mb-5">Trivia & Fun Facts</h2>
+    <div class="container">
+      <div class="trivia-card" id="fact1">
+        <div class="trivia-header">
+          <h5>Tournage à Madrid</h5>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="trivia-body">
+          <p>Une grande partie du tournage de La Casa de Papel a été réalisée à Madrid, dans des lieux emblématiques et
+            des studios soigneusement décorés pour reproduire la Maison de la Monnaie.</p>
+        </div>
+      </div>
+
+      <div class="trivia-card" id="fact2">
+        <div class="trivia-header">
+          <h5>Masques de Dalí</h5>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="trivia-body">
+          <p>Les masques de Salvador Dalí sont devenus un symbole de la série, représentant la rébellion contre le
+            système et l’unité du groupe de braqueurs.</p>
+        </div>
+      </div>
+
+      <div class="trivia-card" id="fact3">
+        <div class="trivia-header">
+          <h5>Musique emblématique</h5>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="trivia-body">
+          <p>La chanson “Bella Ciao” est utilisée dans plusieurs scènes clés pour renforcer l’esprit de résistance et
+            est devenue un hymne international des fans de la série.</p>
+        </div>
+      </div>
+
+      <div class="trivia-card" id="fact4">
+        <div class="trivia-header">
+          <h5>Costumes rouges</h5>
+          <span class="toggle-icon">+</span>
+        </div>
+        <div class="trivia-body">
+          <p>Les combinaisons rouges et les masques distinctifs sont utilisés pour unifier visuellement l’équipe et
+            créer une identité visuelle forte et reconnaissable.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Contrôles -->
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselSaisons" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-      <span class="visually-hidden">Précédent</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselSaisons" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-      <span class="visually-hidden">Suivant</span>
-    </button>
-  </div>
-</section>
-
-
-
-<!-- Anecdotes et faits amusants-->
-<section id="trivia" class="trivia-section">
-  <h2 class="text-center mb-5">Trivia & Fun Facts</h2>
-  <div class="container">
-    <div class="trivia-card" id="fact1">
-      <div class="trivia-header">
-        <h5>Tournage à Madrid</h5>
-        <span class="toggle-icon">+</span>
-      </div>
-      <div class="trivia-body">
-        <p>Une grande partie du tournage de La Casa de Papel a été réalisée à Madrid, dans des lieux emblématiques et des studios soigneusement décorés pour reproduire la Maison de la Monnaie.</p>
-      </div>
-    </div>
-
-    <div class="trivia-card" id="fact2">
-      <div class="trivia-header">
-        <h5>Masques de Dalí</h5>
-        <span class="toggle-icon">+</span>
-      </div>
-      <div class="trivia-body">
-        <p>Les masques de Salvador Dalí sont devenus un symbole de la série, représentant la rébellion contre le système et l’unité du groupe de braqueurs.</p>
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">Contactez-nous</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <form id="contactForm" class="contact-form">
+            <div class="form-group mb-4">
+              <label for="name">Nom complet</label>
+              <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+            </div>
+            <div class="form-group mb-4">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" placeholder="Votre email" required>
+            </div>
+            <div class="form-group mb-4">
+              <label for="subject">Objet</label>
+              <input type="text" id="subject" class="form-control" placeholder="Objet du message" required>
+            </div>
+            <div class="form-group mb-4">
+              <label for="message">Message</label>
+              <textarea id="message" rows="5" class="form-control" placeholder="Votre message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-danger btn-lg w-100">Envoyer</button>
+          </form>
+          <div id="formMessage" class="mt-3 text-center"></div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="trivia-card" id="fact3">
-      <div class="trivia-header">
-        <h5>Musique emblématique</h5>
-        <span class="toggle-icon">+</span>
-      </div>
-      <div class="trivia-body">
-        <p>La chanson “Bella Ciao” est utilisée dans plusieurs scènes clés pour renforcer l’esprit de résistance et est devenue un hymne international des fans de la série.</p>
-      </div>
-    </div>
 
-    <div class="trivia-card" id="fact4">
-      <div class="trivia-header">
-        <h5>Costumes rouges</h5>
-        <span class="toggle-icon">+</span>
-      </div>
-      <div class="trivia-body">
-        <p>Les combinaisons rouges et les masques distinctifs sont utilisés pour unifier visuellement l’équipe et créer une identité visuelle forte et reconnaissable.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- FOOTER -->
+  <footer class="footer-section py-5">
+    <div class="container text-center">
 
-<!-- CONTACT -->
-<section id="contact" class="contact-section py-5">
-  <div class="container">
-    <h2 class="text-center mb-5">Contactez-nous</h2>
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-        <form id="contactForm" class="contact-form">
-          <div class="form-group mb-4">
-            <label for="name">Nom complet</label>
-            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
-          </div>
-          <div class="form-group mb-4">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" placeholder="Votre email" required>
-          </div>
-          <div class="form-group mb-4">
-            <label for="subject">Objet</label>
-            <input type="text" id="subject" class="form-control" placeholder="Objet du message" required>
-          </div>
-          <div class="form-group mb-4">
-            <label for="message">Message</label>
-            <textarea id="message" rows="5" class="form-control" placeholder="Votre message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-danger btn-lg w-100">Envoyer</button>
+      <!-- Liens vers sections principales -->
+      <div class="footer-links mb-4">
+        <a href="casa.html">Accueil</a> |
+        <a href="casa.html">Histoire</a> |
+        <a href="#container">Boutiquue</a> |
+        <a href="Watch.html">TV</a> |
+        <a href="casa.html">Contact</a>
+      </div>
+
+      <!-- Formulaire de commentaire -->
+      <div class="comments-section mb-4">
+        <h4>Laisser un commentaire</h4>
+        <form id="footerCommentForm" class="comment-form">
+          <input type="text" id="footerName" placeholder="Votre nom ou pseudonyme" required>
+          <textarea id="footerComment" rows="2" placeholder="Votre commentaire" required></textarea>
+          <button type="submit">Ajouter</button>
         </form>
-        <div id="formMessage" class="mt-3 text-center"></div>
       </div>
+
+      <!-- Liste des commentaires -->
+      <div id="footerComments" class="footer-comments"></div>
+
+      <p class="mt-3">&copy; 2025 La Casa de Papel. Tous droits réservés.</p>
+      <img style="text-align: center; box-shadow: 0 0 10px #ffffff23, 0 0 20px #ffffff23, 0 0 30px #ffffff23;
+    animation: splashIntro 3s ease forwards, glow 1.5s infinite alternate;border-radius: 50%;" href="#hero"
+        class="navbar-brand" src="image/masquenav.png" alt="masque">
     </div>
-  </div>
-</section>
-
-
-<!-- FOOTER -->
-<footer class="footer-section py-5">
-  <div class="container text-center">
-
-    <!-- Liens vers sections principales -->
-     <div class="footer-links mb-4">
-      <a href="casa.html">Accueil</a> |
-      <a href="casa.html">Histoire</a> |
-      <a href="#container">Boutiquue</a> |
-      <a href="Watch.html">TV</a> |
-      <a href="casa.html">Contact</a>
-    </div>
-
-    <!-- Formulaire de commentaire -->
-    <div class="comments-section mb-4">
-      <h4>Laisser un commentaire</h4>
-      <form id="footerCommentForm" class="comment-form">
-        <input type="text" id="footerName" placeholder="Votre nom ou pseudonyme" required>
-        <textarea id="footerComment" rows="2" placeholder="Votre commentaire" required></textarea>
-        <button type="submit">Ajouter</button>
-      </form>
-    </div>
-
-    <!-- Liste des commentaires -->
-    <div id="footerComments" class="footer-comments"></div>
-
-    <p class="mt-3">&copy; 2025 La Casa de Papel. Tous droits réservés.</p>
-    <img style="text-align: center; box-shadow: 0 0 10px #ffffff23, 0 0 20px #ffffff23, 0 0 30px #ffffff23;
-    animation: splashIntro 3s ease forwards, glow 1.5s infinite alternate;border-radius: 50%;" href="#hero" class="navbar-brand" src="image/masquenav.png" alt="masque">
-  </div>
-</footer>
+  </footer>
 
 
   <script src="script.js"></script>
 </body>
+
 </html>

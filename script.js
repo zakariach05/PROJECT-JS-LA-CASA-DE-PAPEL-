@@ -47,7 +47,7 @@ window.addEventListener("scroll", () => {
 
 // ================= GSAP Animations =================
 if (typeof gsap !== "undefined") {
-  
+
   // Hero parallaxe léger
   window.addEventListener("scroll", () => {
     const scrolled = window.scrollY;
@@ -102,9 +102,9 @@ window.addEventListener("load", animateInfos);
 
 // GSAP animation pour effet plus fluide
 if (typeof gsap !== "undefined") {
-  gsap.from("#infos h2", { opacity:0, y:-50, duration:1, delay:1 });
-  gsap.from("#infos h3", { opacity:0, x:-50, stagger:0.2, duration:1.2, delay:1.5 });
-  gsap.from("#infos .info-card", { opacity:0, y:50, stagger:0.3, duration:1.2, delay:2 });
+  gsap.from("#infos h2", { opacity: 0, y: -50, duration: 1, delay: 1 });
+  gsap.from("#infos h3", { opacity: 0, x: -50, stagger: 0.2, duration: 1.2, delay: 1.5 });
+  gsap.from("#infos .info-card", { opacity: 0, y: 50, stagger: 0.3, duration: 1.2, delay: 2 });
 }
 
 
@@ -128,7 +128,7 @@ function changeImage() {
 setInterval(changeImage, 3000);
 
 //========scrool animation PERSONNAGES=====
-(function(){
+(function () {
   // Smooth scroll to la section "personnages" pour les liens <a href="#personnages">
   document.querySelectorAll('a[href="#personnages"]').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -178,6 +178,38 @@ setInterval(changeImage, 3000);
       }
     });
   }
+
+  // --- Logic for "Voir plus" button ---
+  const voirPlusBtn = document.getElementById('voir-plus-btn');
+  const extraChars = document.querySelectorAll('.extra-character');
+
+  if (voirPlusBtn && extraChars.length > 0) {
+    voirPlusBtn.addEventListener('click', () => {
+      extraChars.forEach(char => {
+        char.classList.remove('extra-character');
+        // Let Bootstrap's default display handle it
+        char.style.display = '';
+        // Force the card to animate if it's already in view
+        const card = char.querySelector('.flip-card');
+        if (card) {
+          card.classList.add('show');
+        }
+      });
+
+      // Simple GSAP animation for the newly revealed cards
+      if (typeof gsap !== "undefined") {
+        gsap.from(Array.from(extraChars).map(el => el.querySelector('.flip-card')), {
+          opacity: 0,
+          y: 50,
+          stagger: 0.1,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      }
+
+      voirPlusBtn.style.display = 'none'; // Hide the button after showing all characters
+    });
+  }
 })();
 
 
@@ -212,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Animation scroll
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
@@ -240,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = document.getElementById('footerName').value.trim();
     const comment = document.getElementById('footerComment').value.trim();
 
-    if(name && comment){
+    if (name && comment) {
       const newComment = document.createElement('div');
       newComment.classList.add('comment-item', 'visible');
       newComment.innerHTML = `<strong>${name}</strong>: ${comment}`;
@@ -254,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Animation au scroll (IntersectionObserver)
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
@@ -263,13 +295,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.footer-comments .comment-item').forEach(item => observer.observe(item));
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const items = document.querySelectorAll('#carouselSaisons .carousel-item');
   let currentIndex = 0;
-  
+
   function showItem(index) {
     items.forEach((item, i) => {
-      if(i === index) {
+      if (i === index) {
         item.classList.add('active');
       } else {
         item.classList.remove('active');
@@ -281,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
     currentIndex = (currentIndex + 1) % items.length;
     showItem(currentIndex);
   });
-  
+
   document.querySelector('#carouselSaisons .carousel-control-prev').addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + items.length) % items.length;
     showItem(currentIndex);
@@ -312,21 +344,21 @@ document.addEventListener('DOMContentLoaded', function() {
 // });
 // });
 // === CODE 1 : BOUTON RETOUR EN HAUT ===
-    const btnTopp = document.getElementById("btnTop");
-    
-    if (btnTopp) {
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 300) {
-                btnTopp.classList.add("show");
-            } else {
-                btnTopp.classList.remove("show");
-            }
-        });
+const btnTopp = document.getElementById("btnTop");
 
-        btnTopp.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+if (btnTopp) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btnTopp.classList.add("show");
+    } else {
+      btnTopp.classList.remove("show");
     }
+  });
+
+  btnTopp.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
 
 
 
@@ -336,270 +368,312 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const episodesData = {
   1: [
-    { img: "image/saison1.webp", title: "Épisode 1", desc: "Le Professeur recrute Tokyo pour le braquage du siècle à la Monnaie d'Espagne.",videoSrc: "vidio/Saison1/EP1.mp4",subtitles: [
-                {
-                    src: "subtitles/saison1/episode1_fr.vtt",
-                    srclang: "fr",
-                    label: "Français"
-                  },
-                {
-                  src: "subtitles/saison1/episode1_ar.vtt",
-                    srclang: "ar",
-                    label: "العربية"
-                  },
-                {
-                    src: "subtitles/saison1/episode1_en.vtt",
-                    srclang: "en",
-                    label: "English"
-                }
-              ] },
-              { img: "image/saison1.webp", title: "Épisode 2", desc: "Les otages deviennent imprévisibles.", videoSrc: "vidio/Saison1/EP2.mp4" , subtitles: [
-                { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+    {
+      img: "image/saison1.webp", title: "Épisode 1", desc: "Le Professeur recrute Tokyo pour le braquage du siècle à la Monnaie d'Espagne.", videoSrc: "vidio/Saison1/EP1.mp4", subtitles: [
+        {
+          src: "subtitles/saison1/episode1_fr.vtt",
+          srclang: "fr",
+          label: "Français"
+        },
+        {
+          src: "subtitles/saison1/episode1_ar.vtt",
+          srclang: "ar",
+          label: "العربية"
+        },
+        {
+          src: "subtitles/saison1/episode1_en.vtt",
+          srclang: "en",
+          label: "English"
+        }
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 2", desc: "Les otages deviennent imprévisibles.", videoSrc: "vidio/Saison1/EP2.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
       ]
     },
-    { img: "image/saison1.webp", title: "Épisode 3", desc: "Le plan du Professeur est mis à l’épreuve.",videoSrc: "vidio/Saison1/EP3.mp4",  subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison1.webp", title: "Épisode 4", desc: "Les tensions explosent dans le groupe." , videoSrc: "vidio/Saison1/EP4.mp4",  subtitles: [
+    {
+      img: "image/saison1.webp", title: "Épisode 3", desc: "Le plan du Professeur est mis à l’épreuve.", videoSrc: "vidio/Saison1/EP3.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
     },
-    { img: "image/saison1.webp", title: "Épisode 5", desc: "La police découvre un indice majeur." ,videoSrc: "vidio/Saison1/EP5.mp4",  subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison1.webp", title: "Épisode 6", desc: "Un otage tente de s’échapper." , videoSrc: "vidio/Saison1/EP6.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-      { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison1.webp", title: "Épisode 7", desc: "Les braqueurs perdent le contrôle." , videoSrc: "vidio/Saison1/EP7.mp4",  subtitles: [
+    {
+      img: "image/saison1.webp", title: "Épisode 4", desc: "Les tensions explosent dans le groupe.", videoSrc: "vidio/Saison1/EP4.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
     },
-    { img: "image/saison1.webp", title: "Épisode 8", desc: "Berlin prend une décision radicale." , videoSrc: "vidio/Saison1/EP8.mp4",  subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison1.webp", title: "Épisode 9", desc: "L’amour complique les plans." , videoSrc: "vidio/Saison1/EP9.mp4",  subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison1.webp", title: "Épisode 10", desc: "Le Professeur affronte un piège." , videoSrc: "vidio/Saison1/EP10.mp4", subtitles: [
+    {
+      img: "image/saison1.webp", title: "Épisode 5", desc: "La police découvre un indice majeur.", videoSrc: "vidio/Saison1/EP5.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-    { img: "image/saison1.webp", title: "Épisode 11", desc: "La police encercle le bâtiment." ,videoSrc: "vidio/Saison1/EP11.mp4",  subtitles: [
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 6", desc: "Un otage tente de s’échapper.", videoSrc: "vidio/Saison1/EP6.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-    { img: "image/saison1.webp", title: "Épisode 12", desc: "La fin du casse approche." ,videoSrc: "vidio/Saison1/EP12.mp4" , subtitles: [
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 7", desc: "Les braqueurs perdent le contrôle.", videoSrc: "vidio/Saison1/EP7.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-    { img: "image/saison1.webp", title: "Épisode 13", desc: "L’évasion finale commence." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-      { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-    ] 
-  }
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 8", desc: "Berlin prend une décision radicale.", videoSrc: "vidio/Saison1/EP8.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 9", desc: "L’amour complique les plans.", videoSrc: "vidio/Saison1/EP9.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 10", desc: "Le Professeur affronte un piège.", videoSrc: "vidio/Saison1/EP10.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 11", desc: "La police encercle le bâtiment.", videoSrc: "vidio/Saison1/EP11.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 12", desc: "La fin du casse approche.", videoSrc: "vidio/Saison1/EP12.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison1.webp", title: "Épisode 13", desc: "L’évasion finale commence.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    }
   ],
   2: [
-    { img: "image/saison2.webp", title: "Épisode 1", desc: "Le plan s’écroule petit à petit.",videoSrc: "vidio/Saison2/EP1.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ]  
-    },
-    { img: "image/saison2.webp", title: "Épisode 2", desc: "Tokyo se rebelle contre les ordres.",videoSrc: "vidio/Saison2/EP2.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-      { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-    ] 
-  },
-  { img: "image/saison2.webp", title: "Épisode 3", desc: "Les médias s’en mêlent." ,videoSrc: "vidio/Saison2/EP3.mp4", subtitles: [
-    { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-    { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-     { img: "image/saison2.webp", title: "Épisode 4", desc: "Un otage change la donne.",videoSrc: "vidio/Saison2/EP4.mp4", subtitles: [
+    {
+      img: "image/saison2.webp", title: "Épisode 1", desc: "Le plan s’écroule petit à petit.", videoSrc: "vidio/Saison2/EP1.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
     },
-    { img: "image/saison2.webp", title: "Épisode 5", desc: "Berlin prépare un sacrifice.",videoSrc: "vidio/Saison2/EP5.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison2.webp", title: "Épisode 6", desc: "La tension atteint son sommet.",videoSrc: "vidio/Saison2/EP6.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-     { img: "image/saison2.webp", title: "Épisode 7", desc: "Le Professeur perd le contrôle.",videoSrc: "vidio/Saison2/EP7.mp4", subtitles: [
+    {
+      img: "image/saison2.webp", title: "Épisode 2", desc: "Tokyo se rebelle contre les ordres.", videoSrc: "vidio/Saison2/EP2.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-    { img: "image/saison2.webp", title: "Épisode 8", desc: "L’amour et la trahison.",videoSrc: "vidio/Saison2/EP8.mp4", subtitles: [
+      ]
+    },
+    {
+      img: "image/saison2.webp", title: "Épisode 3", desc: "Les médias s’en mêlent.", videoSrc: "vidio/Saison2/EP3.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-    { img: "image/saison2.webp", title: "Épisode 9", desc: "Le grand final du premier casse.",videoSrc: "vidio/Saison2/EP9.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+      ]
+    },
+    {
+      img: "image/saison2.webp", title: "Épisode 4", desc: "Un otage change la donne.", videoSrc: "vidio/Saison2/EP4.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
+    },
+    {
+      img: "image/saison2.webp", title: "Épisode 5", desc: "Berlin prépare un sacrifice.", videoSrc: "vidio/Saison2/EP5.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison2.webp", title: "Épisode 6", desc: "La tension atteint son sommet.", videoSrc: "vidio/Saison2/EP6.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison2.webp", title: "Épisode 7", desc: "Le Professeur perd le contrôle.", videoSrc: "vidio/Saison2/EP7.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison2.webp", title: "Épisode 8", desc: "L’amour et la trahison.", videoSrc: "vidio/Saison2/EP8.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison2.webp", title: "Épisode 9", desc: "Le grand final du premier casse.", videoSrc: "vidio/Saison2/EP9.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
     }
   ],
   3: [
-    { img: "image/saison3.webp", title: "Épisode 1", desc: "Retour en mission pour sauver Rio.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-      { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-    ] 
-     },
-     { img: "image/saison3.webp", title: "Épisode 2", desc: "La Banque d’Espagne devient la cible.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-       { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-       { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison3.webp", title: "Épisode 3", desc: "Le plan parfait commence." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-      { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison3.webp", title: "Épisode 4", desc: "Un agent double se révèle.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison3.webp", title: "Épisode 5", desc: "Le Professeur sous pression.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+    {
+      img: "image/saison3.webp", title: "Épisode 1", desc: "Retour en mission pour sauver Rio.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-     { img: "image/saison3.webp", title: "Épisode 6", desc: "L’armée s’en mêle.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+      ]
+    },
+    {
+      img: "image/saison3.webp", title: "Épisode 2", desc: "La Banque d’Espagne devient la cible.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-     { img: "image/saison3.webp", title: "Épisode 7", desc: "Un sacrifice héroïque.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-       { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-       { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-       { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
     },
-    { img: "image/saison3.webp", title: "Épisode 8", desc: "Le chaos s’installe.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-      { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+    {
+      img: "image/saison3.webp", title: "Épisode 3", desc: "Le plan parfait commence.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison3.webp", title: "Épisode 4", desc: "Un agent double se révèle.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison3.webp", title: "Épisode 5", desc: "Le Professeur sous pression.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison3.webp", title: "Épisode 6", desc: "L’armée s’en mêle.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison3.webp", title: "Épisode 7", desc: "Un sacrifice héroïque.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison3.webp", title: "Épisode 8", desc: "Le chaos s’installe.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
     }
   ],
   4: [
-    { img: "image/saison4webp.webp", title: "Épisode 1", desc: "Tokyo reprend le commandement." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison4webp.webp", title: "Épisode 2", desc: "La guerre psychologique continue.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+    {
+      img: "image/saison4webp.webp", title: "Épisode 1", desc: "Tokyo reprend le commandement.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-     { img: "image/saison4webp.webp", title: "Épisode 3", desc: "Les pertes s’accumulent." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+      ]
+    },
+    {
+      img: "image/saison4webp.webp", title: "Épisode 2", desc: "La guerre psychologique continue.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
     },
-    { img: "image/saison4webp.webp", title: "Épisode 4", desc: "Un tournant tragique." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison4webp.webp", title: "Épisode 5", desc: "Le Professeur face à l’échec.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison4webp.webp", title: "Épisode 6", desc: "Une révélation inattendue.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+    {
+      img: "image/saison4webp.webp", title: "Épisode 3", desc: "Les pertes s’accumulent.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-     },
-     { img: "image/saison4webp.webp", title: "Épisode 7", desc: "L’espoir renaît.",videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+      ]
+    },
+    {
+      img: "image/saison4webp.webp", title: "Épisode 4", desc: "Un tournant tragique.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
     },
-    { img: "image/saison4webp.webp", title: "Épisode 8", desc: "Fin sanglante du braquage." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+    {
+      img: "image/saison4webp.webp", title: "Épisode 5", desc: "Le Professeur face à l’échec.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
+    },
+    {
+      img: "image/saison4webp.webp", title: "Épisode 6", desc: "Une révélation inattendue.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison4webp.webp", title: "Épisode 7", desc: "L’espoir renaît.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
+    },
+    {
+      img: "image/saison4webp.webp", title: "Épisode 8", desc: "Fin sanglante du braquage.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
     }
   ],
   5: [
-    { img: "image/saison5.jpeg", title: "Épisode 1", desc: "La dernière bataille commence." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+    {
+      img: "image/saison5.jpeg", title: "Épisode 1", desc: "La dernière bataille commence.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
     },
-    { img: "image/saison5.jpeg", title: "Épisode 2", desc: "Les adieux d’un héros." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
-      { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
-      { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
-        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
-    },
-    { img: "image/saison5.jpeg", title: "Épisode 3", desc: "L’armée encercle la banque." ,videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+    {
+      img: "image/saison5.jpeg", title: "Épisode 2", desc: "Les adieux d’un héros.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
         { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
         { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
         { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
-      ] 
+      ]
+    },
+    {
+      img: "image/saison5.jpeg", title: "Épisode 3", desc: "L’armée encercle la banque.", videoSrc: "vidio/Saison1/EP13.mp4", subtitles: [
+        { src: "subtitles/saison1/episode1_fr.vtt", srclang: "fr", label: "Français" },
+        { src: "subtitles/saison1/episode1_ar.vtt", srclang: "ar", label: "العربية" },
+        { src: "subtitles/saison1/episode1_en.vtt", srclang: "en", label: "English" }
+      ]
     },
     { img: "image/saison5.jpeg", title: "Épisode 4", desc: "Le sacrifice final se prépare." },
     { img: "image/saison5.jpeg", title: "Épisode 5", desc: "Tokyo prend sa revanche." },
@@ -622,10 +696,10 @@ episodeContainer.parentNode.insertBefore(videoFrameContainer, episodeContainer);
 
 function displayEpisodes(season) {
   const episodes = episodesData[season];
-    if (!episodes) return;
-    
-    episodeContainer.innerHTML = episodes
-        .map(ep => `
+  if (!episodes) return;
+
+  episodeContainer.innerHTML = episodes
+    .map(ep => `
             <div class="episode-card">
                 <img src="${ep.img}" alt="${ep.title}">
                 <div class="episode-info">
@@ -637,24 +711,24 @@ function displayEpisodes(season) {
                 </div>
             </div>
         `)
-        .join("");
-    
-    // Espace en bas
-    episodeContainer.style.marginBottom = "80px";
+    .join("");
 
-    // Ajouter les événements aux boutons "Regarder"
-    document.querySelectorAll('.watch-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const videoSrc = this.getAttribute('data-video');
-            const episodeTitle = this.parentElement.querySelector('h4').textContent;
-            openVideoInPage(videoSrc, episodeTitle);
-        });
+  // Espace en bas
+  episodeContainer.style.marginBottom = "80px";
+
+  // Ajouter les événements aux boutons "Regarder"
+  document.querySelectorAll('.watch-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const videoSrc = this.getAttribute('data-video');
+      const episodeTitle = this.parentElement.querySelector('h4').textContent;
+      openVideoInPage(videoSrc, episodeTitle);
     });
+  });
 }
 
 // 🆕 MODIFIÉ : Fonction pour afficher la vidéo locale
 function openVideoInPage(videoSrc, episodeTitle) {
-    videoFrameContainer.innerHTML = `
+  videoFrameContainer.innerHTML = `
         <div class="video-wrapper">
             <button class="close-video">✖</button>
             <div class="video-header">
@@ -669,49 +743,49 @@ function openVideoInPage(videoSrc, episodeTitle) {
             </div>
         </div>
     `;
-    videoFrameContainer.style.display = "block";
+  videoFrameContainer.style.display = "block";
 
-    // 🆕 Défilement fluide vers la vidéo
-    videoFrameContainer.scrollIntoView({ 
-      behavior: 'smooth', 
-        block: 'center' 
-      });
-      
-      // Bouton pour fermer la vidéo
-    const closeVideoBtn = videoFrameContainer.querySelector(".close-video");
-    closeVideoBtn.addEventListener("click", () => {
-        // 🆕 Arrêter la vidéo avant de fermer
-        const video = videoFrameContainer.querySelector('video');
-        if (video) {
-            video.pause();
-            video.currentTime = 0;
-        }
-        videoFrameContainer.style.display = "none";
-        videoFrameContainer.innerHTML = "";
-      });
-    }
-    
-    // Changement de saison
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        buttons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        
-        // 🆕 Arrêter et cacher la vidéo en cours quand on change de saison
-        const video = videoFrameContainer.querySelector('video');
-        if (video) {
-          video.pause();
-          video.currentTime = 0;
-        }
-        videoFrameContainer.style.display = "none";
-        videoFrameContainer.innerHTML = "";
-        
-        displayEpisodes(btn.dataset.season);
-    });
+  // 🆕 Défilement fluide vers la vidéo
+  videoFrameContainer.scrollIntoView({
+    behavior: 'smooth',
+    block: 'center'
   });
 
-  // Afficher la saison 1 par défaut
-  displayEpisodes(1);
+  // Bouton pour fermer la vidéo
+  const closeVideoBtn = videoFrameContainer.querySelector(".close-video");
+  closeVideoBtn.addEventListener("click", () => {
+    // 🆕 Arrêter la vidéo avant de fermer
+    const video = videoFrameContainer.querySelector('video');
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+    videoFrameContainer.style.display = "none";
+    videoFrameContainer.innerHTML = "";
+  });
+}
+
+// Changement de saison
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // 🆕 Arrêter et cacher la vidéo en cours quand on change de saison
+    const video = videoFrameContainer.querySelector('video');
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
+    videoFrameContainer.style.display = "none";
+    videoFrameContainer.innerHTML = "";
+
+    displayEpisodes(btn.dataset.season);
+  });
+});
+
+// Afficher la saison 1 par défaut
+displayEpisodes(1);
 
 
 
