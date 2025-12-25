@@ -27,7 +27,7 @@ body {
 
 /* ======= Welcome Banner ======= */
 .welcome-banner {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -40,6 +40,7 @@ body {
   box-shadow: 0 2px 15px rgba(211, 47, 47, 0.4);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 
 
 .welcome-banner-track {
@@ -80,27 +81,43 @@ body {
 
 /* Offset for content below banner */
 .navbar {
+  position: absolute !important;
+  /* Start as absolute to scroll with banner */
   top: 40px !important;
-  /* Move the fixed navbar below the banner */
   margin-top: 0 !important;
+  width: 100%;
+}
+
+.navbar.scrolled {
+  position: fixed !important;
+  /* Flip to fixed when scrolled */
+  top: 0 !important;
+  z-index: 2500 !important;
 }
 
 .splash {
-  height: calc(100vh - 40px) !important;
-  top: 40px !important;
+  height: 100vh !important;
+  top: 0 !important;
 }
 
 /* Ensure sections take the banner into account */
 .hero,
 .watch-hero,
 .shop-header {
-  margin-top: 40px;
+  margin-top: 0;
+  /* Removing extra margin as absolute banner/nav handle it */
 }
 
-/* Adjust Watch splash which has inline styles */
-[style*="height: 100vh"] {
-  height: calc(100vh - 40px) !important;
+/* Specific adjustment for Watch Hero to not be covered */
+.watch-hero {
+  padding-top: 160px !important;
 }
+
+/* Adjust Watch splash which has inline styles (removed the previous offset) */
+[style*="height: 100vh"] {
+  height: 100vh !important;
+}
+
 
 
 /* ======= Splash screen ======= */

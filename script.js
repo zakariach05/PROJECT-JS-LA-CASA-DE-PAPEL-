@@ -372,7 +372,7 @@ const initAnimations = () => {
   // Navbar scroll effect
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('.navbar');
-    if (window.scrollY > 100) {
+    if (window.scrollY > 40) {
       nav.classList.add('scrolled');
     } else {
       nav.classList.remove('scrolled');
@@ -445,7 +445,7 @@ const initUI = () => {
     // Forcer la lecture au premier clic n'importe où sur la page
     document.body.addEventListener('click', () => {
       if (video.paused) {
-        video.play().catch(e => console.log("Lecture forcée échouée"));
+        video.play().catch(_e => console.log("Lecture forcée échouée"));
       }
     }, { once: true });
   }
