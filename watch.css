@@ -1,0 +1,301 @@
+/* Watch Page - La Casa de Papel */
+
+:root {
+    --primary: #d32f2f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* ======= Watch Section Hero ======= */
+.watch-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #000 0%, #1a0000 100%);
+    padding: 120px 20px 60px;
+    width: 100%;
+}
+
+.watch-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.watch-poster {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(211, 47, 47, 0.4);
+    transition: transform 0.4s ease;
+}
+
+.watch-poster img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.watch-details h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #fff 0%, #d32f2f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.watch-tag {
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.watch-btn {
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.watch-btn-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+.watch-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ======= Episodes Section ======= */
+.episodes-section {
+    padding: 100px 20px;
+    background: #000;
+}
+
+.episodes-header h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.season-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 60px;
+}
+
+.season-btn {
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.season-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.episode-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.episode-thumbnail {
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.episode-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.episode-info {
+    padding: 20px;
+}
+
+.episode-info h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* ======= Video Player Area ======= */
+.video-player-area {
+    width: 100%;
+    margin-bottom: 50px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.video-player-area.hidden {
+    display: none;
+}
+
+.video-container {
+    background: #000;
+    border: 1px solid rgba(211, 47, 47, 0.3);
+    box-shadow: 0 0 50px rgba(211, 47, 47, 0.15);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======= Footer Corrections ======= */
+.footer-premium {
+    background: #050505;
+    padding: 80px 20px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 100;
+}
+
+.footer-col,
+.footer-middle,
+.footer-bottom {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+}
+
+/* ======= Splash Screen Fullscreen ======= */
+.splash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.splash::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.splash.zoom-out {
+    transform: scale(2);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 1s ease;
+}
+
+@media (max-width: 768px) {
+    .watch-content {
+        grid-template-columns: 1fr;
+    }
+
+    .episodes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .watch-details h1 {
+        font-size: 2.5rem;
+    }
+
+    .episodes-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .season-selector {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        justify-content: flex-start !important;
+        overflow-x: auto !important;
+        padding: 10px 20px 25px 20px !important;
+        gap: 12px !important;
+        margin-left: -20px;
+        margin-right: -20px;
+        width: calc(100% + 40px);
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        position: relative;
+    }
+
+    .season-selector::-webkit-scrollbar {
+        display: none;
+    }
+
+    .season-btn {
+        flex: 0 0 auto !important;
+        padding: 10px 22px !important;
+        font-size: 0.85rem !important;
+        border-radius: 12px !important;
+        white-space: nowrap !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        transition: all 0.3s ease;
+    }
+
+    .season-btn.active {
+        background: #d32f2f !important;
+        border-color: #d32f2f !important;
+        box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+    }
+}

@@ -1,126 +1,651 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Regardez maintenant - La Casa de Papel</title>
   <link rel="icon" href="image/IMGtitle.png">
+
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Anime.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Watch CSS -->
+  <link rel="stylesheet" href="watch.css">
+
+  <!-- Bouton Retour en haut -->
+  <button id="btnTop" title="Retour à l'accueil">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- Sons pour interactions -->
+  <audio id="likeSound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="dislikeSound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="favoriteSound" preload="auto">
+    <source src="https://assets.mixkit.co/active_storage/sfx/2570/2570-preview.mp3" type="audio/mpeg">
+  </audio>
 </head>
-<body>
 
-    <!-- SPLASH SCREEN -->
-<div class="splash">
-  <h1 style="text-align: center;" class="splash-title">Regardez  maintenant <br> 🍿</h1>
-  <img id="masquesplash" src="image/masquenav.png" alt="masque">
-</div>
+<body class="bg-black text-white overflow-x-hidden">
 
-    <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="height: 100px;">
-  <div id="containerr" class="container">
-    <img href="#hero" class="navbar-brand" src="image/masquenav.png" alt="masque">
-    <a class="navbar-brand" href="#hero">LA CASA DE PAPEL </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div id="navbarNav" class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html">Histoire</a></li>
-        <li class="nav-item"><a class="nav-link" href="Boutiquue.html">Boutique</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html">Saisons</a></li>
-        <li class="nav-item"><a class="nav-link" href="Watch.html">TV</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html">Contact</a></li>
-      </ul>
+  <!-- WELCOME BANNER -->
+  <div class="welcome-banner">
+    <div class="welcome-banner-track">
+      <span>BIENVENUE DANS LA RÉSISTANCE <img src="image/masquenav.png" class="banner-mask" alt="mask"> BIENVENUE DANS
+        LA RÉSISTANCE <img src="image/masquenav.png" class="banner-mask" alt="mask"></span>
+      <span>BIENVENUE DANS LA RÉSISTANCE <img src="image/masquenav.png" class="banner-mask" alt="mask"> BIENVENUE DANS
+        LA RÉSISTANCE <img src="image/masquenav.png" class="banner-mask" alt="mask"></span>
+      <span>BIENVENUE DANS LA RÉSISTANCE <img src="image/masquenav.png" class="banner-mask" alt="mask"> BIENVENUE DANS
+        LA RÉSISTANCE <img src="image/masquenav.png" class="banner-mask" alt="mask"></span>
     </div>
   </div>
-</nav>
 
-  <section class="watch-section">
-    <div class="content">
-      <div class="poster">
+  <!-- SPLASH SCREEN -->
+  <div class="splash"
+    style="background: url('IMG_Boutique/tv.jpg') center/cover no-repeat; height: 100vh; width: 100vw;">
+    <div class="splash-overlay"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);"></div>
+    <div class="relative z-10 text-center">
+      <h1 class="text-6xl font-black tracking-tighter text-white uppercase mb-4 glow-text">LA CASA DE PAPEL</h1>
+      <div class="w-24 h-1 bg-[#d32f2f] mx-auto"></div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-2xl">
+    <div id="containerr" class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        LA CASA DE PAPEL
+        <div id="navSoundLogo" class="nav-sound-dot" title="Son actif"></div>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#infos">Histoire</a></li>
+          <li class="nav-item"><a class="nav-link" href="Boutiquue.html">Boutique</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#saisons">Saisons</a></li>
+          <li class="nav-item"><a class="nav-link active" href="Watch.html">TV</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- WATCH HERO SECTION -->
+  <section class="watch-hero">
+    <div class="watch-content">
+
+      <!-- Poster -->
+      <div class="watch-poster">
         <img src="image/Money-Heist-watch.webp" alt="Affiche Casa de Papel">
       </div>
 
-      <div class="details">
-        <button class="btn-watch">▶ Regardez maintenant</button>
+      <!-- Details -->
+      <div class="watch-details">
+        <button class="watch-btn watch-btn-primary mb-4" onclick="scrollToEpisodes()">
+          <i class="fas fa-play"></i> Regardez maintenant
+        </button>
 
         <h1>La Casa de Papel</h1>
-        <div class="tags">
-          <button class="tag">Trailer</button>
-          <button class="tag">HD</button>
-          <span class="imdb">IMDB: 8.2</span>
+
+        <div class="watch-tags">
+          <span class="watch-tag">Trailer</span>
+          <span class="watch-tag">HD</span>
+          <span class="watch-tag"><i class="fas fa-star text-yellow-400"></i> IMDB: 8.2</span>
         </div>
 
-        <p class="description">
-          Pour réaliser le plus grand braquage de l’histoire, un homme mystérieux appelé « Le Professeur » recrute huit criminels ayant tout à perdre. Pendant plusieurs jours, ils restent enfermés dans la Fabrique nationale de la monnaie d’Espagne, entourés par la police et des otages, dans une guerre psychologique haletante.
+        <p class="watch-description">
+          Pour réaliser le plus grand braquage de l'histoire, un homme mystérieux appelé « Le Professeur » recrute huit
+          criminels ayant tout à perdre. Pendant plusieurs jours, ils restent enfermés dans la Fabrique nationale de la
+          monnaie d'Espagne, entourés par la police et des otages, dans une guerre psychologique haletante.
         </p>
 
-        <ul class="info">
-          <li><strong>Sortie :</strong> 2017</li>
-          <li><strong>Durée :</strong> 70 min</li>
-          <li><strong>Genre :</strong> Crime, Drame</li>
-          <li><strong>Pays :</strong> Espagne</li>
-          <li><strong>Production :</strong> Vancouver Media</li>
-          <li><strong>Acteurs :</strong> Álvaro Morte, Úrsula Corberó, Itziar Ituño, Pedro Alonso</li>
-        </ul>
+        <div class="watch-info-grid">
+          <div class="watch-info-item"><strong>Sortie:</strong> 2017</div>
+          <div class="watch-info-item"><strong>Durée:</strong> 70 min</div>
+          <div class="watch-info-item"><strong>Genre:</strong> Crime, Drame</div>
+          <div class="watch-info-item"><strong>Pays:</strong> Espagne</div>
+          <div class="watch-info-item"><strong>Production:</strong> Vancouver Media</div>
+          <div class="watch-info-item"><strong>Acteurs:</strong> Álvaro Morte, Úrsula Corberó</div>
+        </div>
 
-        <div class="actions">
-          <button id="click-sound" onclick="playClickSound()" class="like">👍 J’aime</button>
-          <button id="click-sound" class="dislike">👎 Je n’aime pas</button>
-          <button id="click-sound" class="fav">⭐ Ajouter aux favoris</button>
+        <div class="watch-actions">
+          <button class="watch-btn watch-btn-secondary btn-like">
+            <i class="fas fa-thumbs-up"></i> J'aime
+          </button>
+          <button class="watch-btn watch-btn-secondary btn-dislike">
+            <i class="fas fa-thumbs-down"></i> Je n'aime pas
+          </button>
+          <button class="watch-btn watch-btn-secondary btn-favorite">
+            <i class="fas fa-star"></i> Favoris
+          </button>
         </div>
       </div>
     </div>
   </section>
 
-<!-- episodes -->
-    <!-- episodes -->
-    <section id="episodes">
-        <h2>📺 Les Saisons de La Casa de Papel</h2>
+  <!-- EPISODES SECTION -->
+  <section id="episodes" class="episodes-section">
+    <div class="container">
 
-        <div class="season-selector">
-            <button class="season-btn active" data-season="1">Saison 1</button>
-            <button class="season-btn" data-season="2">Saison 2</button>
-            <button class="season-btn" data-season="3">Saison 3</button>
-            <button class="season-btn" data-season="4">Saison 4</button>
-            <button class="season-btn" data-season="5">Saison 5</button>
+      <!-- Header -->
+      <div class="episodes-header">
+        <h2><i class="fas fa-tv"></i> Les Saisons de La Casa de Papel</h2>
+        <p class="text-gray-400 text-center">Découvrez tous les épisodes de la série</p>
+      </div><br><br>
+
+      <!-- Season Selector -->
+      <div class="season-selector">
+        <button class="season-btn active" data-season="1">Saison 1</button>
+        <button class="season-btn" data-season="2">Saison 2</button>
+        <button class="season-btn" data-season="3">Saison 3</button>
+        <button class="season-btn" data-season="4">Saison 4</button>
+        <button class="season-btn" data-season="5">Saison 5</button>
+      </div>
+
+      <!-- Video Player Area (Hidden by default) -->
+      <div id="videoPlayerArea" class="video-player-area mb-12 hidden">
+        <div class="video-container rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black">
+          <video id="mainVideoPlayer" controls class="w-full aspect-video">
+            <source src="" type="video/mp4">
+          </video>
+          <div class="p-6 bg-[#0a0a0a]">
+            <h2 id="currentVideoTitle" class="text-2xl font-bold mb-2"></h2>
+            <p id="currentVideoDesc" class="text-gray-400"></p>
+          </div>
         </div>
-      <div id="video-frame-container" class="video-frame"></div>
-      <div id="episode-container" class="episode-grid"></div>
-    </section>
+      </div>
 
-    <!-- FOOTER -->
-<footer class="footer-section py-5">
-  <div class="container text-center">
+      <!-- Episodes Grid -->
+      <div class="episodes-grid">
 
-    <!-- Liens vers sections principales -->
-     <div class="footer-links mb-4">
-      <a href="casa.html">Accueil</a> |
-      <a href="casa.html">Histoire</a> |
-      <a href="#container">Boutiquue</a> |
-      <a href="Watch.html">TV</a> |
-      <a href="casa.html">Contact</a>
+        <!-- Episode 1 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'Épisode 1 - Se faire connaître', 'Le Professeur recrute Tokyo pour le braquage du siècle.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 1">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 1</div>
+            <div class="episode-duration">47:24</div>
+          </div>
+          <div class="episode-info">
+            <h3>Se faire connaître</h3>
+            <p>Tokyo est recrutée par un mystérieux homme appelé le Professeur.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 2 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'Épisode 2 - Imprudence', 'L\'équipe entre dans la Fabrique nationale de la monnaie.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 2">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 2</div>
+            <div class="episode-duration">41:17</div>
+          </div>
+          <div class="episode-info">
+            <h3>Imprudence</h3>
+            <p>L'équipe entre dans la Fabrique nationale de la monnaie. Les masques de Dalí font leur apparition.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 3 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'Épisode 3 - Errer dans le brouillard', 'La police commence à enquêter.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 3">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 3</div>
+            <div class="episode-duration">50:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Errer dans le brouillard</h3>
+            <p>La police commence à enquêter. Raquel Murillo prend en charge les négociations.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 4 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'Épisode 4 - Cabaret', 'Le Professeur établit le premier contact avec Raquel.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 4">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 4</div>
+            <div class="episode-duration">45:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Cabaret</h3>
+            <p>Le Professeur établit le premier contact avec Raquel. Tokyo et Rio se rapprochent.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 5 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'Épisode 5 - Le loup et le chien', 'Un otage tente de s\'échapper.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 5">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 5</div>
+            <div class="episode-duration">48:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Le loup et le chien</h3>
+            <p>Un otage tente de s'échapper, mettant le plan en danger.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 6 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'Épisode 6 - La cote de la Monnaie', 'L\'impression des billets commence.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 6">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 6</div>
+            <div class="episode-duration">43:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>La cote de la Monnaie</h3>
+            <p>L'impression des billets commence enfin. Nairobi supervise la production.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 7 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'Épisode 7 - Sang froid', 'Une crise majeure éclate.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 7">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 7</div>
+            <div class="episode-duration">46:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Sang froid</h3>
+            <p>Une crise majeure éclate quand un membre de l'équipe est blessé.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 8 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'Épisode 8 - Vous avez un plan ?', 'La police découvre une information.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 8">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 8</div>
+            <div class="episode-duration">44:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Vous avez un plan ?</h3>
+            <p>La police découvre une information qui pourrait tout changer.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 9 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'Épisode 9 - La tête et la queue', 'Décision impulsive de Tokyo.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 9">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 9</div>
+            <div class="episode-duration">47:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>La tête et la queue</h3>
+            <p>Tokyo prend une décision impulsive qui met tout le monde en danger.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 10 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'Épisode 10 - Faire usage de la force', 'La police prépare une intervention.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 10">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 10</div>
+            <div class="episode-duration">42:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Faire usage de la force</h3>
+            <p>La police prépare une intervention d'urgence.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 11 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'Épisode 11 - Rédemption', 'Un sacrifice inattendu.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 11">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 11</div>
+            <div class="episode-duration">49:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Rédemption</h3>
+            <p>Un membre de l'équipe fait un sacrifice inattendu.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 12 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'Épisode 12 - Le plan Paris', 'Plan d\'évasion révélé.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 12">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 12</div>
+            <div class="episode-duration">45:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Le plan Paris</h3>
+            <p>Le Professeur révèle son plan d'évasion. L'équipe doit exécuter la dernière phase.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- Episode 13 -->
+        <!-- Episode 13 -->
+        <!-- Episode 13 -->
+        <div class="episode-card" data-season="1"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'Épisode 13 - Bella Ciao', 'Final épique.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison1.webp" alt="Episode 13">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">ÉPISODE 13</div>
+            <div class="episode-duration">52:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Bella Ciao</h3>
+            <p>Le final épique de la première partie.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <div class="episode-card" data-season="2"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'S02 E01', 'Le plan continue.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison2.webp" alt="Saison 2">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">S02 E01</div>
+            <div class="episode-duration">45:30</div>
+          </div>
+          <div class="episode-info">
+            <h3>Nouveau Plan</h3>
+            <p>Le Professeur prépare son prochain coup magistral.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <div class="episode-card" data-season="2"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'S02 E02', 'La traque.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison2.webp" alt="Saison 2">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">S02 E02</div>
+            <div class="episode-duration">43:15</div>
+          </div>
+          <div class="episode-info">
+            <h3>Traque</h3>
+            <p>Raquel se rapproche dangereusement de l'identité du Professeur.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- SAISON 3 -->
+        <div class="episode-card" data-season="3"
+          onclick="playEpisode('vidio/Saison1/EP1.mp4', 'S03 E01', 'Le retour.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison3.webp" alt="Saison 3">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">S03 E01</div>
+            <div class="episode-duration">48:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>On est de retour</h3>
+            <p>Une nouvelle mission commence pour l'équipe.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- SAISON 4 -->
+        <div class="episode-card" data-season="4"
+          onclick="playEpisode('vidio/Saison1/EP2.mp4', 'S04 E01', 'Le chaos.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison4webp.webp" alt="Saison 4">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">S04 E01</div>
+            <div class="episode-duration">50:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>Chaos</h3>
+            <p>La tension monte à la Banque d'Espagne.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+        <!-- SAISON 5 -->
+        <div class="episode-card" data-season="5" onclick="playEpisode('vidio/Saison1/EP1.mp4', 'S05 E01', 'La fin.')">
+          <div class="episode-thumbnail">
+            <img src="image/saison5.jpeg" alt="Saison 5">
+            <div class="episode-overlay">
+              <div class="play-button"><i class="fas fa-play"></i></div>
+            </div>
+            <div class="episode-badge">S05 E01</div>
+            <div class="episode-duration">55:00</div>
+          </div>
+          <div class="episode-info">
+            <h3>L'ultime bataille</h3>
+            <p>La conclusion épique de l'histoire.</p>
+            <button class="watch-btn-primary mt-3 w-full py-2 rounded-lg text-sm font-bold">VOIR ÉPISODE</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER PREMIUM -->
+  <footer class="footer-premium bg-gradient-to-b from-black to-[#0a0a0a] border-t border-[#d32f2f]/20">
+    <div class="container mx-auto px-4 py-16">
+
+      <!-- Footer Top Section -->
+      <div class="footer-top grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+
+        <!-- Brand Column -->
+        <div class="footer-col footer-brand">
+          <div class="footer-logo mb-6">
+            <h3 class="text-3xl font-black text-white uppercase tracking-wider">
+              La Casa de <span class="text-[#d32f2f]">Papel</span>
+            </h3>
+            <div class="w-20 h-1 bg-[#d32f2f] mt-2"></div>
+          </div>
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            L'histoire du plus grand braquage de l'histoire. Une série Netflix originale qui a captivé le monde entier.
+          </p>
+          <div class="footer-mask">
+            <img src="image/masquenav.png" alt="Masque Dali"
+              class="w-20 h-20 rounded-full border-2 border-[#d32f2f] p-2 hover:scale-110 transition-transform duration-300">
+          </div>
+        </div>
+
+        <!-- Navigation Column -->
+        <div class="footer-col footer-links">
+          <h4 class="footer-title text-xl font-bold text-white uppercase mb-6 relative">
+            Navigation
+            <span class="footer-title-line"></span>
+          </h4>
+          <ul class="space-y-3">
+            <li><a href="index.html" class="footer-link">Accueil</a></li>
+            <li><a href="index.html#infos" class="footer-link">Histoire</a></li>
+            <li><a href="index.html#personnages" class="footer-link">Personnages</a></li>
+            <li><a href="index.html#saisons" class="footer-link">Saisons</a></li>
+            <li><a href="Watch.html" class="footer-link">Regarder</a></li>
+            <li><a href="index.html#contact" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources Column -->
+        <div class="footer-col footer-resources">
+          <h4 class="footer-title text-xl font-bold text-white uppercase mb-6 relative">
+            Ressources
+            <span class="footer-title-line"></span>
+          </h4>
+          <ul class="space-y-3">
+            <li><a href="Boutiquue.html" class="footer-link">Boutique</a></li>
+            <li><a href="#" class="footer-link">Galerie Photos</a></li>
+            <li><a href="#" class="footer-link">Bande-annonces</a></li>
+            <li><a href="#" class="footer-link">Actualités</a></li>
+            <li><a href="#" class="footer-link">FAQ</a></li>
+            <li><a href="#" class="footer-link">Mentions Légales</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Column -->
+        <div class="footer-col footer-newsletter">
+          <h4 class="footer-title text-xl font-bold text-white uppercase mb-6 relative">
+            Newsletter
+            <span class="footer-title-line"></span>
+          </h4>
+          <p class="text-gray-400 mb-4">
+            Restez informé des dernières nouvelles et contenus exclusifs.
+          </p>
+          <form class="newsletter-form">
+            <div class="relative mb-4">
+              <input type="email" placeholder="Votre email"
+                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#d32f2f] transition-colors"
+                required>
+            </div>
+            <button type="submit" class="footer-btn w-full">
+              <span>S'abonner</span>
+              <i class="fas fa-paper-plane ml-2"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer Middle - Social Media -->
+      <div class="footer-middle py-8 border-y border-white/10">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="footer-social-title">
+            <h4 class="text-lg font-bold text-white uppercase">Suivez-nous</h4>
+          </div>
+          <div class="footer-social flex gap-4">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="social-icon" aria-label="TikTok">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+          <div class="footer-badge">
+            <span
+              class="px-4 py-2 bg-[#d32f2f]/10 border border-[#d32f2f] rounded-full text-[#d32f2f] text-sm font-bold uppercase">
+              Netflix Original
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom pt-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-gray-500 text-sm">
+            &copy; 2025 <span class="text-[#d32f2f] font-semibold">La Casa de Papel</span>. Tous droits réservés.
+          </p>
+          <div class="footer-quote text-gray-400 italic text-sm">
+            "Bella Ciao, Bella Ciao, Bella Ciao Ciao Ciao..."
+          </div>
+          <div class="footer-credits text-gray-500 text-sm">
+            Créé avec <i class="fas fa-heart text-[#d32f2f] mx-1"></i> par les fans
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Formulaire de commentaire -->
-    <div class="comments-section mb-4">
-      <h4>Laisser un commentaire</h4>
-      <form id="footerCommentForm" class="comment-form">
-        <input type="text" id="footerName" placeholder="Votre nom ou pseudonyme" required>
-        <textarea id="footerComment" rows="2" placeholder="Votre commentaire" required></textarea>
-        <button type="submit">Ajouter</button>
-      </form>
-    </div>
+    <!-- Animated Background Pattern -->
+    <div class="footer-pattern"></div>
+  </footer>
 
-    <!-- Liste des commentaires -->
-    <p class="mt-3">&copy; 2025 La Casa de Papel. Tous droits réservés.</p>
-    <img style="text-align: center;background-color: #fff; box-shadow: 0 0 10px #d32f2f, 0 0 20px #d32f2f, 0 0 30px #ff5252;
-    animation: splashIntro 3s ease forwards, glow 1.5s infinite alternate;border-radius: 50%;" href="#hero" class="navbar-brand" src="image/masquenav.png" alt="masque">
-  </div>
-</footer>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="watch.js"></script>
 
-    <script src="script.js"></script>
 </body>
+
 </html>
