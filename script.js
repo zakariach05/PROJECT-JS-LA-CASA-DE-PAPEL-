@@ -363,6 +363,15 @@ const initSplashScreen = () => {
             ease: "expo.out"
           });
         }
+
+        // 4. Play hero video after splash is gone
+        const heroVideo = document.getElementById("hero-video");
+        if (heroVideo) {
+          heroVideo.muted = true;
+          heroVideo.play().catch(_e => {
+            console.log("Autoplay after splash blocked.");
+          });
+        }
       }
     });
   }, 1500);
@@ -414,31 +423,30 @@ const initUI = () => {
   const soundBtn = document.getElementById("soundToggle");
 
   if (video && soundBtn) {
-    // La video doit commencer en muet pour autoriser l'autplay par le navigateur
-    video.muted = true;
+    const icon = soundBtn.querySelector("i");
+    const navDot = document.getElementById("navSoundLogo");
 
-    // Essayer de lancer la vidéo
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        console.log("Autoplay bloqué, attente d'interaction");
-      });
-    }
+    // Force initial muted state in UI to match JS
+    video.muted = true;
+    if (icon) icon.className = "fas fa-volume-xmark";
+    soundBtn.classList.add("muted");
+    if (navDot) navDot.classList.add("muted");
+
+    // Try to play immediately (might be blocked by splash)
+    video.play().catch(_e => console.log("Initial autoplay waiting for splash or click."));
 
     soundBtn.addEventListener("click", () => {
       video.muted = !video.muted;
-      const icon = soundBtn.querySelector("i");
-      const navDot = document.getElementById("navSoundLogo");
 
       if (video.muted) {
-        icon.className = "fas fa-volume-xmark";
+        if (icon) icon.className = "fas fa-volume-xmark";
         soundBtn.classList.add("muted");
         if (navDot) navDot.classList.add("muted");
       } else {
-        icon.className = "fas fa-volume-high";
+        if (icon) icon.className = "fas fa-volume-high";
         soundBtn.classList.remove("muted");
         if (navDot) navDot.classList.remove("muted");
-        video.play(); // S'assurer que ça joue quand on active le son
+        video.play().catch(_e => console.log("Action play failed"));
       }
     });
 
